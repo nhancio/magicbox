@@ -14,15 +14,16 @@ export function ChatMessage({ role, content, timestamp }: ChatMessageProps) {
   return (
     <div
       className={cn(
-        "flex gap-3 py-4",
-        isAssistant ? "bg-muted/30" : "bg-transparent"
+        "flex gap-3 py-4 px-4 rounded-xl mb-2",
+        isAssistant ? "bg-card/80 border border-border/50" : "bg-primary/5"
       )}
     >
-      <Avatar className="h-8 w-8 shrink-0">
+      <Avatar className="h-9 w-9 shrink-0">
         <AvatarFallback
           className={cn(
+            "rounded-xl",
             isAssistant
-              ? "bg-primary text-primary-foreground"
+              ? "bg-gradient-primary text-primary-foreground"
               : "bg-secondary text-secondary-foreground"
           )}
         >
@@ -31,14 +32,14 @@ export function ChatMessage({ role, content, timestamp }: ChatMessageProps) {
       </Avatar>
       <div className="flex-1 space-y-1">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium">
+          <span className="text-sm font-semibold">
             {isAssistant ? "Marketer" : "You"}
           </span>
           {timestamp && (
             <span className="text-xs text-muted-foreground">{timestamp}</span>
           )}
         </div>
-        <p className="text-sm leading-relaxed text-foreground/90">{content}</p>
+        <p className="text-sm leading-relaxed text-foreground/90 whitespace-pre-wrap">{content}</p>
       </div>
     </div>
   );

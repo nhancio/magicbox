@@ -111,11 +111,11 @@ export default function Agents() {
   return (
     <div className="flex h-full">
       {/* Draft Board */}
-      <div className="w-[400px] border-r border-border bg-muted/30 p-4">
+      <div className="w-[400px] border-r border-border/50 bg-card/50 backdrop-blur-sm p-4">
         <div className="mb-4 flex items-center gap-2">
           <h2 className="text-lg font-semibold">Draft Board</h2>
           {showDrafts && (
-            <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+            <span className="rounded-full bg-gradient-primary px-2.5 py-0.5 text-xs font-medium text-primary-foreground">
               {mockDrafts.length} drafts
             </span>
           )}
@@ -136,8 +136,8 @@ export default function Agents() {
           </ScrollArea>
         ) : (
           <div className="flex h-[300px] flex-col items-center justify-center text-center">
-            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-              <Bot className="h-8 w-8 text-muted-foreground" />
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-primary glow-primary">
+              <Bot className="h-8 w-8 text-primary-foreground" />
             </div>
             <p className="text-sm text-muted-foreground">
               Start a conversation with Marketer to generate draft posts
@@ -149,14 +149,14 @@ export default function Agents() {
       {/* Chat Interface */}
       <div className="flex flex-1 flex-col">
         {/* Chat Header */}
-        <div className="flex items-center gap-3 border-b border-border px-6 py-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
+        <div className="flex items-center gap-3 border-b border-border/50 px-6 py-4 bg-card/50 backdrop-blur-sm">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-primary shadow-lg glow-primary">
             <Bot className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
             <h2 className="font-semibold">Marketer</h2>
             <p className="text-xs text-muted-foreground">
-              AI Social Media Strategist
+              AI Social Media Strategist • <span className="text-emerald-500">Online</span>
             </p>
           </div>
         </div>
@@ -176,16 +176,16 @@ export default function Agents() {
         </ScrollArea>
 
         {/* Input */}
-        <div className="border-t border-border p-4">
+        <div className="border-t border-border/50 p-4 bg-card/50 backdrop-blur-sm">
           <div className="flex gap-2">
             <Input
               placeholder="Tell Marketer about your campaign goal..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              className="flex-1"
+              className="flex-1 bg-background/50"
             />
-            <Button onClick={handleSend} disabled={!input.trim()}>
+            <Button onClick={handleSend} disabled={!input.trim()} className="bg-gradient-primary hover:opacity-90 transition-opacity">
               <Send className="h-4 w-4" />
             </Button>
           </div>

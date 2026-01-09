@@ -25,7 +25,7 @@ export default function Studio() {
   return (
     <div className="flex h-full">
       {/* Canvas area */}
-      <div className="flex flex-1 items-center justify-center bg-muted/30 p-8">
+      <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-primary/5 via-transparent to-accent/5 p-8">
         <PostCanvas
           platform={platform}
           format={format}
