@@ -9,6 +9,7 @@ import Studio from "@/pages/Studio";
 import Schedule from "@/pages/Schedule";
 import Agents from "@/pages/Agents";
 import Analytics from "@/pages/Analytics";
+import Integrations from "@/pages/Integrations";
 import Settings from "@/pages/Settings";
 import NotFound from "@/pages/NotFound";
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/agents" element={<Agents />} />
             <Route path="/analytics" element={<Analytics />} />
+            <Route path="/integrations" element={<Integrations />} />
             <Route path="/settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />

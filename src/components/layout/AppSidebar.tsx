@@ -7,7 +7,7 @@ import {
   Bot,
   BarChart3,
   Settings,
-  Sparkles,
+  Link2,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -20,6 +20,7 @@ const navigation = [
   { name: "Schedule", href: "/schedule", icon: Calendar },
   { name: "Agents", href: "/agents", icon: Bot },
   { name: "Analytics", href: "/analytics", icon: BarChart3 },
+  { name: "Integrations", href: "/integrations", icon: Link2 },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 
@@ -37,9 +38,11 @@ export function AppSidebar() {
       {/* Logo */}
       <div className="flex h-16 items-center justify-between border-b border-border px-4">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <Sparkles className="h-4 w-4 text-primary-foreground" />
-          </div>
+          <img
+            src="/images/magicbox.png"
+            alt="MagicBoxAI Logo"
+            className="h-8 w-8 object-contain"
+          />
           {!collapsed && (
             <span className="text-lg font-semibold tracking-tight">
               MagicBoxAI

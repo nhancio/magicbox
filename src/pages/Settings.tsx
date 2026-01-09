@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Upload, Palette, MessageSquare, Link2, Check } from "lucide-react";
+import { Upload, Palette, MessageSquare, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 const voiceOptions = [
@@ -13,23 +11,6 @@ const voiceOptions = [
   { id: "professional", label: "Professional", description: "Formal, polished, business-focused" },
   { id: "friendly", label: "Friendly", description: "Warm, approachable, conversational" },
   { id: "bold", label: "Bold", description: "Confident, direct, attention-grabbing" },
-];
-
-const integrations = [
-  {
-    id: "instagram",
-    name: "Instagram Business",
-    description: "Connect your Instagram Business account",
-    icon: "📸",
-    connected: true,
-  },
-  {
-    id: "facebook",
-    name: "Facebook Page",
-    description: "Connect your Facebook Page",
-    icon: "📘",
-    connected: false,
-  },
 ];
 
 export default function Settings() {
@@ -41,23 +22,11 @@ export default function Settings() {
       <div>
         <h1 className="text-2xl font-semibold">Settings</h1>
         <p className="text-muted-foreground">
-          Manage your brand kit and integrations
+          Manage your brand kit and preferences
         </p>
       </div>
 
-      <Tabs defaultValue="brand" className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="brand" className="gap-2">
-            <Palette className="h-4 w-4" />
-            Brand Kit
-          </TabsTrigger>
-          <TabsTrigger value="integrations" className="gap-2">
-            <Link2 className="h-4 w-4" />
-            Integrations
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="brand" className="space-y-6">
+      <div className="space-y-6">
           {/* Logo Upload */}
           <Card>
             <CardHeader>
@@ -150,39 +119,7 @@ export default function Settings() {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-
-        <TabsContent value="integrations" className="space-y-4">
-          {integrations.map((integration) => (
-            <Card key={integration.id}>
-              <CardContent className="flex items-center justify-between p-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted text-2xl">
-                    {integration.icon}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-medium">{integration.name}</h3>
-                      {integration.connected && (
-                        <Badge variant="secondary" className="gap-1 text-xs">
-                          <Check className="h-3 w-3" />
-                          Connected
-                        </Badge>
-                      )}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {integration.description}
-                    </p>
-                  </div>
-                </div>
-                <Button variant={integration.connected ? "outline" : "default"}>
-                  {integration.connected ? "Manage" : "Connect"}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </TabsContent>
-      </Tabs>
+      </div>
     </div>
   );
 }

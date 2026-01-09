@@ -16,6 +16,7 @@ const routeNames: Record<string, string> = {
   "/schedule": "Schedule",
   "/agents": "Agents",
   "/analytics": "Analytics",
+  "/integrations": "Integrations",
   "/settings": "Settings",
 };
 
