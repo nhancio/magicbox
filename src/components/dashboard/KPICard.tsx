@@ -18,27 +18,30 @@ export function KPICard({
   icon: Icon,
 }: KPICardProps) {
   return (
-    <Card className="border-border/50 bg-card">
-      <CardContent className="p-6">
+    <Card className="group relative overflow-hidden border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:border-primary/30">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <CardContent className="relative p-6">
         <div className="flex items-start justify-between">
           <div className="space-y-2">
             <p className="text-sm font-medium text-muted-foreground">{title}</p>
-            <p className="text-3xl font-semibold tracking-tight">{value}</p>
+            <p className="text-3xl font-bold tracking-tight">{value}</p>
             {change && (
               <p
                 className={cn(
-                  "text-xs font-medium",
-                  changeType === "positive" && "text-emerald-600",
+                  "text-xs font-medium flex items-center gap-1",
+                  changeType === "positive" && "text-emerald-500",
                   changeType === "negative" && "text-destructive",
                   changeType === "neutral" && "text-muted-foreground"
                 )}
               >
+                {changeType === "positive" && "↑"}
+                {changeType === "negative" && "↓"}
                 {change}
               </p>
             )}
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <Icon className="h-5 w-5 text-primary" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary shadow-lg glow-primary">
+            <Icon className="h-6 w-6 text-primary-foreground" />
           </div>
         </div>
       </CardContent>

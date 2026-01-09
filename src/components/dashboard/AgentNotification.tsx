@@ -1,4 +1,4 @@
-import { Bot, ArrowRight } from "lucide-react";
+import { Bot, ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -12,26 +12,37 @@ export function AgentNotification({
   draftsCount,
 }: AgentNotificationProps) {
   return (
-    <div className="rounded-xl border border-border bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 p-6">
-      <div className="flex items-start justify-between">
+    <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-6">
+      {/* Background gradient glow */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10" />
+      <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-gradient-primary opacity-20 blur-3xl" />
+      <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-gradient-accent opacity-20 blur-3xl" />
+      
+      <div className="relative flex items-start justify-between">
         <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
-            <Bot className="h-6 w-6 text-primary" />
+          <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-primary shadow-lg glow-primary">
+            <Bot className="h-7 w-7 text-primary-foreground" />
+            <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
+              {draftsCount}
+            </span>
           </div>
-          <div className="space-y-1">
-            <p className="text-lg font-medium">
-              Good morning, {userName}!
-            </p>
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <p className="text-xl font-semibold">
+                Good morning, {userName}! <span className="inline-block animate-bounce">👋</span>
+              </p>
+            </div>
             <p className="text-muted-foreground">
-              The <span className="font-medium text-primary">"Marketer"</span>{" "}
+              The <span className="font-semibold text-gradient-primary">"Marketer"</span>{" "}
               agent has prepared{" "}
-              <span className="font-semibold">{draftsCount} draft posts</span>{" "}
-              for you.
+              <span className="font-bold text-foreground">{draftsCount} draft posts</span>{" "}
+              for your review.
             </p>
           </div>
         </div>
         <Link to="/agents">
-          <Button variant="outline" className="gap-2">
+          <Button className="gap-2 bg-gradient-primary hover:opacity-90 transition-opacity shadow-lg glow-primary">
+            <Sparkles className="h-4 w-4" />
             Review Drafts
             <ArrowRight className="h-4 w-4" />
           </Button>
